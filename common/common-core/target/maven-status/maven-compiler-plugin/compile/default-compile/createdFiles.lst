@@ -1,0 +1,8 @@
+com\campus\common\core\enums\PaymentStatus.class
+com\campus\common\core\enums\UserRole.class
+com\campus\common\core\exception\GlobalExceptionHandler.class
+com\campus\common\core\result\Result.class
+com\campus\common\core\enums\ProductStatus.class
+com\campus\common\core\exception\BusinessException.class
+com\campus\common\core\enums\OrderStatus.class
+com\campus\common\core\constant\ErrorCode.class

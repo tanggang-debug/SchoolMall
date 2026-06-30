@@ -1,0 +1,8 @@
+D:\SchoolMall\common\common-core\src\main\java\com\campus\common\core\constant\ErrorCode.java
+D:\SchoolMall\common\common-core\src\main\java\com\campus\common\core\enums\OrderStatus.java
+D:\SchoolMall\common\common-core\src\main\java\com\campus\common\core\enums\PaymentStatus.java
+D:\SchoolMall\common\common-core\src\main\java\com\campus\common\core\enums\ProductStatus.java
+D:\SchoolMall\common\common-core\src\main\java\com\campus\common\core\enums\UserRole.java
+D:\SchoolMall\common\common-core\src\main\java\com\campus\common\core\exception\BusinessException.java
+D:\SchoolMall\common\common-core\src\main\java\com\campus\common\core\exception\GlobalExceptionHandler.java
+D:\SchoolMall\common\common-core\src\main\java\com\campus\common\core\result\Result.java
