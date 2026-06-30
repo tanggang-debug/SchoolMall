@@ -1,6 +1,6 @@
 <template>
   <div class="page home-page">
-    <div class="hero-banner card">
+    <div class="hero-banner">
       <div class="hero-content">
         <h2>发现校园好物</h2>
         <p>为你精选优质二手商品与校园周边</p>
@@ -20,24 +20,45 @@
           </el-input>
         </div>
       </div>
-      <div class="hero-image">
-        <el-icon class="hero-icon"><ShoppingBag /></el-icon>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <el-icon class="stat-icon"><Goods /></el-icon>
+          <div class="stat-content">
+            <span class="stat-value">1,200+</span>
+            <span class="stat-label">优质商品</span>
+          </div>
+        </div>
+        <div class="stat-item">
+          <el-icon class="stat-icon"><User /></el-icon>
+          <div class="stat-content">
+            <span class="stat-value">3,500+</span>
+            <span class="stat-label">活跃用户</span>
+          </div>
+        </div>
+        <div class="stat-item">
+          <el-icon class="stat-icon"><ShoppingCart /></el-icon>
+          <div class="stat-content">
+            <span class="stat-value">8,900+</span>
+            <span class="stat-label">成交订单</span>
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="category-filter">
-      <el-radio-group v-model="categoryId" size="large" @change="load">
+      <h3>商品分类</h3>
+      <el-radio-group v-model="categoryId" size="large" @change="load" class="category-radio-group">
         <el-radio-button :value="null">全部商品</el-radio-button>
         <el-radio-button v-for="c in categories" :key="c.id" :value="c.id">{{ c.name }}</el-radio-button>
       </el-radio-group>
     </div>
 
     <div class="product-grid" v-loading="loading">
-      <div v-for="p in products" :key="p.id" class="product-card card" @click="$router.push(`/product/${p.id}`)">
+      <div v-for="p in products" :key="p.id" class="product-card" @click="$router.push(`/product/${p.id}`)">
         <div class="image-wrapper">
           <img :src="firstImage(p.images)" alt="" />
           <div class="hover-overlay">
-            <el-button type="primary" circle :icon="View" />
+            <el-button type="primary" circle :icon="View" size="large" />
           </div>
         </div>
         <div class="product-info">
@@ -51,7 +72,7 @@
     </div>
     
     <div class="empty-wrapper" v-if="!loading && !products.length">
-      <el-empty description="没有找到相关的商品" />
+      <el-empty description="没有找到相关的商品" :image-size="200" />
     </div>
   </div>
 </template>
@@ -60,7 +81,7 @@
 import { ref, onMounted } from 'vue'
 import request from '../utils/request'
 import { formatCurrency } from '../utils/view'
-import { Search, ShoppingBag, View } from '@element-plus/icons-vue'
+import { Search, Goods, User, ShoppingCart, View } from '@element-plus/icons-vue'
 
 const keyword = ref('')
 const categoryId = ref(null)
@@ -92,90 +113,200 @@ onMounted(async () => { await loadCategories(); await load() })
 </script>
 
 <style scoped>
-.home-page { padding-top: 10px; }
+.home-page { 
+  padding-top: 40px; 
+}
 
 .hero-banner {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 40px 60px;
-  background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
-  color: #fff;
-  border-radius: 16px;
-  margin-bottom: 32px;
-  border: none;
-  box-shadow: 0 10px 30px rgba(142, 197, 252, 0.2);
+  flex-direction: column;
+  background: #ffffff;
+  border: 1px solid rgba(228, 228, 231, 0.8);
+  padding: 60px 50px;
+  color: #18181b;
+  border-radius: 20px;
+  margin-bottom: 50px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 
+               0 1px 2px -1px rgba(0, 0, 0, 0.04);
 }
+
 .hero-content {
-  flex: 1;
-  max-width: 600px;
+  text-align: center;
+  margin-bottom: 40px;
 }
 .hero-content h2 {
-  font-size: 36px;
-  font-weight: 800;
-  margin-bottom: 12px;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: -0.025em;
+  background: linear-gradient(135deg, #18181b 0%, #52525b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 .hero-content p {
   font-size: 18px;
-  opacity: 0.9;
-  margin-bottom: 28px;
+  color: #71717a;
+  margin-bottom: 32px;
+  font-weight: 400;
 }
+
 .search-bar {
-  display: flex;
-  gap: 12px;
+  max-width: 700px;
+  margin: 0 auto;
 }
 .search-input {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  border-radius: 8px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+  border-radius: 12px;
   overflow: hidden;
+  font-size: 16px;
+  border: 1px solid rgba(228, 228, 231, 0.8);
+  transition: all 0.3s ease-in-out;
+}
+.search-input:hover,
+.search-input:focus-within {
+  border-color: rgba(228, 228, 231, 0.9);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+}
+.search-input :deep(.el-input__wrapper) {
+  background: #ffffff;
+  padding: 14px 18px;
+  font-size: 16px;
+  border: none;
+  box-shadow: none;
+}
+.search-input :deep(.el-input__inner) {
+  color: #18181b;
+  font-weight: 500;
+}
+.search-input :deep(.el-input__inner::placeholder) {
+  color: #a1a1aa;
 }
 .search-input :deep(.el-input-group__append) {
-  background-color: #409eff;
-  border: none;
-  color: white;
+  background: #18181b;
+  border: 1px solid #18181b;
+  color: #ffffff;
+  padding: 0 20px;
 }
 .search-btn {
   font-weight: 600;
-  letter-spacing: 2px;
+  font-size: 16px;
+  letter-spacing: 0.01em;
+  padding: 14px 30px;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  transition: all 0.3s ease-in-out;
 }
-.hero-image {
-  font-size: 160px;
-  opacity: 0.8;
-  transform: rotate(15deg);
-  text-shadow: 0 10px 20px rgba(0,0,0,0.1);
+.search-btn:hover {
+  transform: translateY(-0.5px);
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #ffffff;
+  border: 1px solid rgba(228, 228, 231, 0.8);
+  padding: 24px 32px;
+  border-radius: 16px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.02);
+}
+.stat-item:hover {
+  transform: translateY(-0.5px);
+  background: #fafafa;
+  border-color: rgba(228, 228, 231, 0.9);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+}
+
+.stat-icon {
+  font-size: 40px;
+  color: #18181b;
+  transition: all 0.3s ease-in-out;
+}
+.stat-item:hover .stat-icon {
+  color: #3f3f46;
+}
+
+.stat-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stat-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: #18181b;
+  letter-spacing: -0.02em;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: #71717a;
+  font-weight: 500;
+  letter-spacing: 0.01em;
 }
 
 .category-filter {
-  margin-bottom: 24px;
+  margin-bottom: 40px;
+  background: #ffffff;
+  border: 1px solid rgba(228, 228, 231, 0.8);
+  padding: 32px 40px;
+  border-radius: 16px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.02);
+}
+
+.category-filter h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #18181b;
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+}
+
+.category-radio-group {
   display: flex;
-  justify-content: center;
+  gap: 12px;
 }
 
 .product-grid { 
   display: grid; 
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); 
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
   gap: 24px; 
+  margin-bottom: 40px;
 }
+
 .product-card { 
-  padding: 0;
+  background: #ffffff;
+  border: 1px solid rgba(228, 228, 231, 0.8);
+  border-radius: 16px;
   overflow: hidden;
   cursor: pointer; 
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
-  border: 1px solid transparent;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.02);
 }
 .product-card:hover { 
-  transform: translateY(-8px); 
-  box-shadow: 0 12px 24px rgba(0,0,0,0.1);
-  border-color: rgba(64, 158, 255, 0.1);
+  transform: translateY(-1px);
+  border-color: rgba(228, 228, 231, 0.9);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 
+               0 2px 4px -2px rgba(0, 0, 0, 0.05);
 }
 
 .image-wrapper {
   position: relative;
   width: 100%;
-  padding-top: 100%; /* 1:1 Aspect Ratio */
+  padding-top: 100%;
   overflow: hidden;
-  background: #f5f7fa;
+  background: #fafafa;
 }
 .image-wrapper img { 
   position: absolute;
@@ -184,7 +315,7 @@ onMounted(async () => { await loadCategories(); await load() })
   width: 100%; 
   height: 100%; 
   object-fit: cover; 
-  transition: transform 0.5s ease;
+  transition: transform 0.4s ease-in-out;
 }
 .product-card:hover .image-wrapper img {
   transform: scale(1.05);
@@ -196,30 +327,31 @@ onMounted(async () => { await loadCategories(); await load() })
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.2);
+  background: rgba(24, 24, 27, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease-in-out;
 }
 .product-card:hover .hover-overlay {
   opacity: 1;
 }
 
 .product-info {
-  padding: 16px;
+  padding: 20px;
 }
 .product-title { 
   margin: 0 0 12px; 
   font-size: 16px; 
-  color: #303133;
+  color: #18181b;
   font-weight: 600;
-  line-height: 1.4;
+  line-height: 1.5;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  letter-spacing: -0.01em;
 }
 .product-meta {
   display: flex;
@@ -227,22 +359,29 @@ onMounted(async () => { await loadCategories(); await load() })
   justify-content: space-between;
 }
 .price { 
-  color: #f56c6c; 
-  font-size: 22px; 
-  font-weight: 800; 
+  color: #dc2626; 
+  font-size: 20px; 
+  font-weight: 700; 
   line-height: 1;
+  letter-spacing: -0.02em;
 }
 .currency {
   font-size: 14px;
   margin-right: 2px;
+  opacity: 0.8;
 }
 .sales { 
-  color: #909399; 
-  font-size: 13px; 
+  color: #71717a; 
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
 }
+
 .empty-wrapper {
   padding: 60px 0;
-  background: #fff;
-  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid rgba(228, 228, 231, 0.8);
+  border-radius: 16px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.02);
 }
 </style>

@@ -1,187 +1,127 @@
 <template>
-  <div class="page">
-    <div class="help-header card">
+  <div class="page help-page">
+    <div class="page-header">
       <h1>帮助中心</h1>
-      <p>遇到问题？在这里寻找答案，或者联系我们</p>
-      
-      <div class="search-box">
-        <el-input
-          v-model="keyword"
-          placeholder="搜索常见问题..."
-          size="large"
-          :prefix-icon="Search"
-          clearable
-        />
-      </div>
+      <p>了解校园商城的使用指南和常见问题</p>
     </div>
 
-    <div class="help-content">
-      <div class="card faq-card">
-        <h3><el-icon><QuestionFilled /></el-icon> 常见问题 (FAQ)</h3>
-        
-        <el-collapse v-model="activeNames">
-          <el-collapse-item v-for="(item, index) in filteredFaqs" :key="index" :title="item.q" :name="index">
-            <div class="answer">{{ item.a }}</div>
-          </el-collapse-item>
-        </el-collapse>
-        
-        <el-empty v-if="!filteredFaqs.length" description="没有找到相关问题" :image-size="100" />
+    <div class="help-grid">
+      <div class="help-card">
+        <div class="help-icon">📋</div>
+        <h3>新手指南</h3>
+        <p>了解如何注册、购物和成为商家</p>
       </div>
 
-      <div class="card contact-card">
-        <h3><el-icon><Service /></el-icon> 联系客服</h3>
-        <div class="contact-methods">
-          <div class="contact-item">
-            <el-icon class="icon"><Message /></el-icon>
-            <div class="info">
-              <h4>发送邮件</h4>
-              <p>support@campusmall.edu</p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <el-icon class="icon"><Phone /></el-icon>
-            <div class="info">
-              <h4>服务热线</h4>
-              <p>400-123-4567</p>
-              <span>(工作日 9:00 - 18:00)</span>
-            </div>
-          </div>
-          <div class="contact-item">
-            <el-icon class="icon"><Location /></el-icon>
-            <div class="info">
-              <h4>办公地址</h4>
-              <p>大学城科技园 A区 101室</p>
-            </div>
-          </div>
-        </div>
+      <div class="help-card">
+        <div class="help-icon">🔍</div>
+        <h3>购物流程</h3>
+        <p>从搜索到下单支付的完整流程</p>
+      </div>
+
+      <div class="help-card">
+        <div class="help-icon">💼</div>
+        <h3>商家入驻</h3>
+        <p>如何申请成为商家并管理商品</p>
+      </div>
+
+      <div class="help-card">
+        <div class="help-icon">🔒</div>
+        <h3>安全须知</h3>
+        <p>交易安全和账号保护指南</p>
+      </div>
+
+      <div class="help-card">
+        <div class="help-icon">❓</div>
+        <h3>常见问题</h3>
+        <p>用户常见的疑问和解答</p>
+      </div>
+
+      <div class="help-card">
+        <div class="help-icon">📞</div>
+        <h3>联系我们</h3>
+        <p>客服联系方式和反馈渠道</p>
       </div>
     </div>
   </div>
 </template>
 
-<script setup>
-import { ref, computed } from 'vue'
-import { Search, QuestionFilled, Service, Message, Phone, Location } from '@element-plus/icons-vue'
-
-const keyword = ref('')
-const activeNames = ref([0])
-
-const faqs = [
-  { q: '如何注册成为校园商城的卖家？', a: '目前商户账号需要通过管理员后台进行审核分配。如果您有开店需求，请发送邮件至 support@campusmall.edu 提交您的学号、姓名和售卖商品类别申请。' },
-  { q: '购买商品后如何退款？', a: '在"我的订单"页面中，对于未发货或已收货但状态允许的订单，您可以点击"申请退款"按钮，并填写退款原因。商家审核通过后，款项将原路退回。' },
-  { q: '为什么我无法修改默认收货地址？', a: '请在"订单确认"或"个人中心"页面，找到对应的地址并点击"设为默认"。如果遇到网络异常，请刷新页面后重试。' },
-  { q: '模拟支付是怎么回事？', a: '本项目为演示性质的校园商城，不接入真实的微信/支付宝支付。点击"去支付"后跳转的支付页面会显示模拟二维码，点击"模拟支付成功"即可完成订单状态流转。' },
-  { q: '如何查看物流信息？', a: '商家发货后会填写物流单号，您可以在"我的订单" -> "订单详情" 中查看到物流单号。目前系统暂未接入第三方物流轨迹查询接口。' }
-]
-
-const filteredFaqs = computed(() => {
-  if (!keyword.value) return faqs
-  const k = keyword.value.toLowerCase()
-  return faqs.filter(f => f.q.toLowerCase().includes(k) || f.a.toLowerCase().includes(k))
-})
-</script>
-
 <style scoped>
-.help-header {
+/* 极简黑白风格 - 帮助页 */
+.help-page {
+  padding-top: 40px;
+}
+
+.page-header {
+  background: #ffffff;
+  border: 1px solid #e4e4e7;
+  padding: 40px;
   text-align: center;
-  padding: 48px 20px;
-  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-  color: #303133;
-  margin-bottom: 24px;
-}
-.help-header h1 {
-  font-size: 32px;
-  margin: 0 0 12px;
-  font-weight: 800;
-}
-.help-header p {
-  font-size: 16px;
-  color: #606266;
-  margin-bottom: 32px;
-}
-.search-box {
-  max-width: 600px;
-  margin: 0 auto;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  border-radius: 8px;
+  margin-bottom: 40px;
+  border-radius: 16px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
 }
 
-.help-content {
+.page-header h1 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #18181b;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.page-header p {
+  font-size: 16px;
+  color: #71717a;
+  font-weight: 400;
+}
+
+.help-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
 
-.faq-card, .contact-card {
+.help-card {
+  background: #ffffff;
+  border: 1px solid #e4e4e7;
   padding: 32px;
+  border-radius: 12px;
+  text-align: center;
+  transition: box-shadow 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
 }
 
-h3 {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 0 0 24px;
+.help-card:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.help-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.help-card h3 {
   font-size: 20px;
-  color: #303133;
-}
-h3 .el-icon {
-  color: #409eff;
-}
-
-.answer {
-  font-size: 14px;
-  color: #606266;
-  line-height: 1.6;
-  padding: 4px 0 8px;
+  font-weight: 600;
+  color: #18181b;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
 }
 
-/* 覆盖 el-collapse 样式 */
-:deep(.el-collapse-item__header) {
-  font-size: 16px;
-  font-weight: 500;
-  color: #303133;
-}
-
-.contact-methods {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-.contact-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  padding: 16px;
-  background: #f8f9fa;
-  border-radius: 8px;
-  transition: transform 0.2s;
-}
-.contact-item:hover {
-  transform: translateX(4px);
-  background: #ecf5ff;
-}
-.contact-item .icon {
-  font-size: 24px;
-  color: #409eff;
-  margin-top: 2px;
-}
-.info h4 {
-  margin: 0 0 4px;
+.help-card p {
   font-size: 15px;
-  color: #303133;
+  color: #71717a;
+  font-weight: 400;
 }
-.info p {
-  margin: 0;
-  font-size: 14px;
-  color: #606266;
-}
-.info span {
-  font-size: 12px;
-  color: #909399;
+
+@media (max-width: 1024px) {
+  .help-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 768px) {
-  .help-content {
+  .help-grid {
     grid-template-columns: 1fr;
   }
 }

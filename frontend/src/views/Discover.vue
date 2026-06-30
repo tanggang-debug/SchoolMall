@@ -1,74 +1,340 @@
 <template>
-  <div class="page">
-    <h1 class="page-title">发现校园新鲜事 🌟</h1>
-    <div class="discover-grid">
-      <div class="discover-card color-1">
-        <h2>🔥 校园二手集市火热开市</h2>
-        <p>本周末在南区操场，快来淘淘宝贝吧！全场低至1折，还有神秘小礼物相送，不要错过哦！</p>
-        <div class="card-footer">
-          <span>阅读量 1.2w</span>
-          <el-button color="#fff" style="color: #FF6B6B" round>查看详情</el-button>
+  <div class="page discover-page">
+    <div class="hero-banner">
+      <h1>探索校园新世界</h1>
+      <p>发现精彩内容，结识志同道合的伙伴</p>
+    </div>
+
+    <div class="content-grid">
+      <div class="section-card">
+        <div class="section-header">
+          <h2>热门推荐</h2>
+        </div>
+        <div class="recommend-list">
+          <div class="recommend-item">
+            <div class="recommend-image">
+              <img src="https://picsum.photos/id/201/300/200" alt="科技数码" loading="lazy" />
+            </div>
+            <div class="recommend-content">
+              <h3>科技数码专区</h3>
+              <p>最新电子产品、数码配件一应俱全</p>
+              <el-button size="large">立即探索</el-button>
+            </div>
+          </div>
+          <div class="recommend-item">
+            <div class="recommend-image">
+              <img src="https://picsum.photos/id/580/300/200" alt="美食分享" loading="lazy" />
+            </div>
+            <div class="recommend-content">
+              <h3>美食分享区</h3>
+              <p>校园周边美食推荐与评价</p>
+              <el-button size="large">查看详情</el-button>
+            </div>
+          </div>
+          <div class="recommend-item">
+            <div class="recommend-image">
+              <img src="https://picsum.photos/id/1036/300/200" alt="校园风光" loading="lazy" />
+            </div>
+            <div class="recommend-content">
+              <h3>校园风光</h3>
+              <p>记录校园美景，分享青春记忆</p>
+              <el-button size="large">浏览相册</el-button>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="discover-card color-2">
-        <h2>💻 最新数码产品评测</h2>
-        <p>学长带你揭秘最新款平板电脑，到底值不值得学生党入手？性能、续航、价格全方位解析。</p>
-        <div class="card-footer">
-          <span>阅读量 8k</span>
-          <el-button color="#fff" style="color: #4ECDC4" round>查看详情</el-button>
+
+      <div class="section-card">
+        <div class="section-header">
+          <h2>热门话题</h2>
+        </div>
+        <div class="topics-grid">
+          <div class="topic-card">
+            <span class="topic-badge">热门</span>
+            <h3>#期末考试攻略</h3>
+            <p>328人参与讨论</p>
+          </div>
+          <div class="topic-card">
+            <span class="topic-badge">精选</span>
+            <h3>#实习经验分享</h3>
+            <p>156人参与讨论</p>
+          </div>
+          <div class="topic-card">
+            <span class="topic-badge">最新</span>
+            <h3>#社团活动预告</h3>
+            <p>89人参与讨论</p>
+          </div>
+          <div class="topic-card">
+            <span class="topic-badge">推荐</span>
+            <h3>#考研经验交流</h3>
+            <p>245人参与讨论</p>
+          </div>
         </div>
       </div>
-      <div class="discover-card color-3">
-        <h2>📚 考研复习资料免费送</h2>
-        <p>学姐整理了三年的考研笔记，现在免费赠送给有需要的同学，涵盖数学、英语及多门专业课，先到先得！</p>
-        <div class="card-footer">
-          <span>阅读量 2.5w</span>
-          <el-button color="#fff" style="color: #45B7D1" round>查看详情</el-button>
+
+      <div class="section-card">
+        <div class="section-header">
+          <h2>活跃用户</h2>
         </div>
-      </div>
-      <div class="discover-card color-4">
-        <h2>🍔 食堂新档口试吃报告</h2>
-        <p>三食堂二楼新开的麻辣香锅味道如何？我们派出了“试吃小分队”，为你带来最真实的味蕾体验。</p>
-        <div class="card-footer">
-          <span>阅读量 5k</span>
-          <el-button color="#fff" style="color: #F9A03F" round>查看详情</el-button>
-        </div>
-      </div>
-      <div class="discover-card color-5">
-        <h2>🎸 校园十佳歌手总决赛</h2>
-        <p>本周五晚大礼堂，全校最强好声音巅峰对决！扫描下方二维码即可参与抢票，一起来现场为你喜欢的选手打call！</p>
-        <div class="card-footer">
-          <span>阅读量 1.8w</span>
-          <el-button color="#fff" style="color: #9D4EDD" round>查看详情</el-button>
+        <div class="users-list">
+          <div class="user-card">
+            <div class="user-avatar">张</div>
+            <div class="user-info">
+              <h3>张同学</h3>
+              <p>计算机学院</p>
+              <span class="user-badge">活跃达人</span>
+            </div>
+          </div>
+          <div class="user-card">
+            <div class="user-avatar">李</div>
+            <div class="user-info">
+              <h3>李同学</h3>
+              <p>商学院</p>
+              <span class="user-badge">优秀商户</span>
+            </div>
+          </div>
+          <div class="user-card">
+            <div class="user-avatar">王</div>
+            <div class="user-info">
+              <h3>王同学</h3>
+              <p>艺术学院</p>
+              <span class="user-badge">创意之星</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<script setup>
-</script>
-
 <style scoped>
-.page-title { font-size: 42px; font-weight: 900; margin-bottom: 40px; color: #111; }
-.discover-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 30px; }
-.discover-card { 
-  padding: 40px; 
-  border-radius: 24px; 
-  color: #fff; 
-  box-shadow: 8px 8px 0px rgba(0,0,0,0.1); 
-  transition: transform 0.3s, box-shadow 0.3s; 
-  display: flex;
-  flex-direction: column;
+/* 极简黑白风格 - 性能优化 */
+.discover-page {
+  padding-top: 40px;
 }
-.discover-card:hover { transform: translateY(-8px); box-shadow: 12px 12px 0px rgba(0,0,0,0.15); }
-.discover-card h2 { font-size: 28px; font-weight: 900; margin-bottom: 20px; line-height: 1.4; }
-.discover-card p { font-size: 18px; line-height: 1.8; opacity: 0.95; flex: 1; margin-bottom: 30px; }
-.card-footer { display: flex; justify-content: space-between; align-items: center; font-size: 16px; font-weight: bold; }
-.card-footer .el-button { font-size: 16px; font-weight: 800; padding: 12px 24px; height: auto; }
-.color-1 { background: #FF6B6B; }
-.color-2 { background: #4ECDC4; }
-.color-3 { background: #45B7D1; }
-.color-4 { background: #F9A03F; }
-.color-5 { background: #9D4EDD; }
+
+.hero-banner {
+  background: #ffffff;
+  border: 1px solid #e4e4e7;
+  padding: 50px 40px;
+  text-align: center;
+  margin-bottom: 40px;
+  border-radius: 16px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.hero-banner h1 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #18181b;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.hero-banner p {
+  font-size: 16px;
+  color: #71717a;
+  font-weight: 400;
+}
+
+.content-grid {
+  display: grid;
+  gap: 32px;
+}
+
+.section-card {
+  background: #ffffff;
+  border: 1px solid #e4e4e7;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.section-header {
+  margin-bottom: 24px;
+}
+
+.section-header h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #18181b;
+  letter-spacing: -0.01em;
+}
+
+.recommend-list {
+  display: grid;
+  gap: 24px;
+}
+
+.recommend-item {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 24px;
+  background: #fafafa;
+  border: 1px solid #e4e4e7;
+  border-radius: 12px;
+  padding: 20px;
+  transition: box-shadow 0.2s ease;
+}
+
+.recommend-item:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.recommend-image {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #e4e4e7;
+}
+
+.recommend-image img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.recommend-content h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #18181b;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+
+.recommend-content p {
+  font-size: 15px;
+  color: #71717a;
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+.recommend-content .el-button {
+  font-size: 15px;
+  padding: 12px 24px;
+  background: #18181b;
+  border: 1px solid #18181b;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.topics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.topic-card {
+  background: #fafafa;
+  border: 1px solid #e4e4e7;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  transition: box-shadow 0.2s ease;
+}
+
+.topic-card:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.topic-badge {
+  display: inline-block;
+  background: #18181b;
+  color: #ffffff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.topic-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #18181b;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+
+.topic-card p {
+  font-size: 15px;
+  color: #71717a;
+  font-weight: 400;
+}
+
+.users-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.user-card {
+  background: #fafafa;
+  border: 1px solid #e4e4e7;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: box-shadow 0.2s ease;
+}
+
+.user-card:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.user-avatar {
+  width: 48px;
+  height: 48px;
+  background: #18181b;
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.user-info h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #18181b;
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+
+.user-info p {
+  font-size: 14px;
+  color: #71717a;
+  margin-bottom: 8px;
+  font-weight: 400;
+}
+
+.user-badge {
+  display: inline-block;
+  background: #f4f4f5;
+  border: 1px solid #e4e4e7;
+  color: #71717a;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* 响应式 */
+@media (max-width: 1024px) {
+  .recommend-item {
+    grid-template-columns: 1fr;
+  }
+  
+  .recommend-image img {
+    height: 200px;
+  }
+  
+  .topics-grid,
+  .users-list {
+    grid-template-columns: 1fr;
+  }
+}
 </style>

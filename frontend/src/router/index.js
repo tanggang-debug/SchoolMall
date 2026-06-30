@@ -8,6 +8,10 @@ const routes = [
     component: () => import('../layouts/MainLayout.vue'),
     children: [
       { path: '', name: 'home', component: () => import('../views/Home.vue') },
+      { path: 'discover', component: () => import('../views/Discover.vue') },
+      { path: 'points-mall', component: () => import('../views/PointsMall.vue') },
+      { path: 'community', component: () => import('../views/Community.vue') },
+      { path: 'feedback', component: () => import('../views/Feedback.vue') },
       { path: 'product/:id', component: () => import('../views/ProductDetail.vue') },
       { path: 'cart', component: () => import('../views/Cart.vue'), meta: { auth: true } },
       { path: 'order/confirm', component: () => import('../views/OrderConfirm.vue'), meta: { auth: true } },
