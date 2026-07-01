@@ -1,0 +1,12 @@
+{
+  "generate-mini-app": {
+    "lastCheck": 1782802035717,
+    "checkedAt": "2026-06-30T06:47:15.717Z",
+    "status": "request_failed",
+    "reason": "request_failed",
+    "skill_builtin_version": "1.0.0",
+    "skill_local_version": "UNKNOWN",
+    "updatedAt": "",
+    "error": "EPERM: operation not permitted, rename 'D:\\SchoolMall\\frontend\\.pai\\skill-update\\.generate-mini-app.new' -> 'D:\\SchoolMall\\frontend\\.pai\\skill-update\\generate-mini-app'"
+  }
+}
