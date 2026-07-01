@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.campus.mall.cart.CartServiceTest
+-------------------------------------------------------------------------------
+Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.423 s -- in com.campus.mall.cart.CartServiceTest

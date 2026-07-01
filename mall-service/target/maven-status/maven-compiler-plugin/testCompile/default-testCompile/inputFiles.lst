@@ -1,0 +1,9 @@
+D:\SchoolMall\mall-service\src\test\java\com\campus\mall\auth\AuthServiceTest.java
+D:\SchoolMall\mall-service\src\test\java\com\campus\mall\AuthControllerIntegrationTest.java
+D:\SchoolMall\mall-service\src\test\java\com\campus\mall\cart\CartServiceTest.java
+D:\SchoolMall\mall-service\src\test\java\com\campus\mall\CartControllerIntegrationTest.java
+D:\SchoolMall\mall-service\src\test\java\com\campus\mall\order\OrderStateMachineTest.java
+D:\SchoolMall\mall-service\src\test\java\com\campus\mall\OrderControllerIntegrationTest.java
+D:\SchoolMall\mall-service\src\test\java\com\campus\mall\payment\PaymentServiceTest.java
+D:\SchoolMall\mall-service\src\test\java\com\campus\mall\PaymentControllerIntegrationTest.java
+D:\SchoolMall\mall-service\src\test\java\com\campus\mall\product\ProductStateMachineTest.java
